@@ -17,8 +17,8 @@ import { UserModule } from './res/user/user.module';
         username: 'root',
         password: '',
         entities: [
-          path.join(__dirname, 'src/entities/**/*.entity.{js, ts}'),
-          path.join(__dirname, 'dist/entities/**/*.entity.{js, ts}'),
+          path.join(__dirname, 'src/entities/**/*.entity.ts'),
+          path.join(__dirname, 'dist/entities/**/*.entity.js'),
         ],
         synchronize: false,
         logging: true,
