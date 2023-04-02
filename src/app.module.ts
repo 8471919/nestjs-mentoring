@@ -6,6 +6,8 @@ import { AppService } from './app.service';
 import { UserModule } from './res/user/user.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 
+console.log(`.env.${process.env.NODE_ENV}`);
+
 @Module({
   imports: [
     ConfigModule.forRoot({
