@@ -24,10 +24,7 @@ console.log(`.env.${process.env.NODE_ENV}`);
         database: configService.get('DB_NAME'),
         username: configService.get('DB_USER'),
         password: configService.get('DB_PASSWORD'),
-        entities: [
-          path.join(__dirname, 'src/entities/**/*.entity.ts'),
-          path.join(__dirname, 'dist/entities/**/*.entity.js'),
-        ],
+        entities: [path.join(__dirname, '/entities/**/*.entity.{js, ts}')],
         synchronize: false,
         logging: true,
         timezone: 'local',
