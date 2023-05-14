@@ -61,6 +61,7 @@ export class ArticleController {
     return res;
   }
 
+  @UseGuards(JwtAuthGuard)
   @Delete('/:id')
   async deleteArticle(@Param('id') id, @User() user) {
     const userId = user.id;
