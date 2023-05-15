@@ -21,12 +21,14 @@ export class CommentController {
   async createComment(@Body() body, @User() user) {
     const content = body.content;
     const parentId = body?.parentId; // 부모가 없는 경우는 undefined 리턴
+    const articleId = body.articleId;
     const userId = user.id;
 
     const comment = await this.commentService.createComment(
       content,
       parentId,
       userId,
+      articleId,
     );
 
     return comment;
