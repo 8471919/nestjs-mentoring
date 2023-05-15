@@ -10,7 +10,6 @@ import {
 import { CommentService } from './comment.service';
 import { User } from 'src/decorators/user.decorator';
 import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
-import { identity } from 'rxjs';
 
 @Controller('comment')
 export class CommentController {
