@@ -8,6 +8,8 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { AuthModule } from './auth/auth.module';
 import { ArticleModule } from './res/article/article.module';
 import { CommentModule } from './res/comment/comment.module';
+import { APP_FILTER } from '@nestjs/core';
+import { HttpExceptionFilter } from './filters/http-exception.filter';
 
 console.log(`.env.${process.env.NODE_ENV}`);
 
@@ -39,6 +41,12 @@ console.log(`.env.${process.env.NODE_ENV}`);
     CommentModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [
+    {
+      provide: APP_FILTER,
+      useClass: HttpExceptionFilter,
+    },
+    AppService,
+  ],
 })
 export class AppModule {}
