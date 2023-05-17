@@ -8,8 +8,9 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { AuthModule } from './auth/auth.module';
 import { ArticleModule } from './res/article/article.module';
 import { CommentModule } from './res/comment/comment.module';
-import { APP_FILTER } from '@nestjs/core';
+import { APP_FILTER, APP_INTERCEPTOR } from '@nestjs/core';
 import { HttpExceptionFilter } from './filters/http-exception.filter';
+import { undefinedToNullInterceptor } from './interceptors/undefinedToNull.interceptor';
 
 console.log(`.env.${process.env.NODE_ENV}`);
 
@@ -45,6 +46,10 @@ console.log(`.env.${process.env.NODE_ENV}`);
     {
       provide: APP_FILTER,
       useClass: HttpExceptionFilter,
+    },
+    {
+      provide: APP_INTERCEPTOR,
+      useClass: undefinedToNullInterceptor,
     },
     AppService,
   ],
